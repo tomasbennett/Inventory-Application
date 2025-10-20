@@ -1,0 +1,34 @@
+<header>
+
+    <h1>
+        Inventory Application
+    </h1>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/" target="_self" class="nav-link">Home</a>
+            </li>
+            <li>
+                <a href="/categories" target="_self" class="nav-link">Categories</a>
+            </li>
+            <li>
+                <a href="/all-items" target="_self" class="nav-link">+ All Items</a>
+            </li>
+        </ul>
+    </nav>
+
+
+
+</header>
+
+<script>
+    document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", e => {
+            if (window.location.pathname === link.getAttribute("href")) {
+                e.preventDefault();
+                console.log("Already on this page!");
+            }
+        });
+    });
+</script>
