@@ -1,0 +1,28 @@
+{
+  "name": "postgresql-testing",
+  "version": "1.0.0",
+  "description": "This will simply test my ability to connect to a postgreSQL database through an express application.",
+  "main": "app.js",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "npm run build && node app.js",
+    "start:dev": "nodemon ./src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-ejs-layouts": "^2.5.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

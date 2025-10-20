@@ -1,0 +1,27 @@
+<a href="/new" target="_self">New Form</a>
+<section>
+    <% if (messages?.length > 0) { %>
+
+        <ul>
+
+            <% for (let i = 0; i < messages.length; i++) { %>
+    
+                <li>
+                    <p>
+                        <%= messages[i].username %>
+                    </p>
+                </li>
+    
+            <% } %>
+
+        </ul>
+
+    <% } else { %>
+
+        <p class="no-messages">
+            There are no messages currently.
+        </p>
+
+
+    <% } %>
+</section>
