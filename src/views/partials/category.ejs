@@ -1,8 +1,23 @@
-<div
-    class="category-outer-container">
+<div 
+    class="category-outer-container"
+    data-redirect-url="<%= url %>"
+    data-action="<%= onClick %>"
+    >
 
     <p class="category-title">
         <%= categoryName %>
     </p>
+
+    <% if (canEdit) { %>
+
+
+
+    <% } %>
+
+    <% if (canDel) { %>
+
+
+
+    <% } %>
 
 </div>

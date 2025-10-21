@@ -7,7 +7,9 @@
         <%- include("./partials/category.ejs", {
             categoryName: categories[i].name,
             canEdit: true,
-            canDel: true
+            canDel: true,
+            onClick: "redirect",
+            url: '/items/' + categories[i].id
         }) %>
 
     <% } %>
@@ -15,13 +17,17 @@
     <%- include("./partials/category.ejs", {
         categoryName: "All Items",
         canEdit: false,
-        canDel: false
+        canDel: false,
+        onClick: "redirect",
+        url: "/all-items"
     }) %>
 
     <%- include("./partials/category.ejs", {
         categoryName: "+ Add Category",
         canEdit: false,
-        canDel: false
+        canDel: false,
+        onClick: "add-category",
+        url: "#"
     }) %>
 
 
@@ -32,3 +38,8 @@
 
 <%- contentFor('pageTitle') %>
     <title>Categories Page</title>
+
+
+<%- contentFor('styleSheets') %>
+    <link rel="stylesheet" href="/pages/categoryPage.css">
+    <link rel="stylesheet" href="/partials/category.css">

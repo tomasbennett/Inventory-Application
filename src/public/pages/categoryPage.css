@@ -1,0 +1,18 @@
+main.categories-main-page{
+    flex: 1 1 0;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    grid-auto-rows: 20rem;
+
+    column-gap: 2rem;
+    row-gap: 2rem;
+
+    width: 100%;
+
+
+    overflow-y: auto;
+
+    padding: 0 var(--padding-left-right);
+    padding-bottom: 2rem;
+}
