@@ -1,8 +1,32 @@
-<p>
-    This is the catgeories page
-</p>
+<main class="categories-main-page">
 
-<% console.log(categories); %>
+
+
+    <% for (let i = 0; i < categories.length; i++) { %>
+
+        <%- include("./partials/category.ejs", {
+            categoryName: categories[i].name,
+            canEdit: true,
+            canDel: true
+        }) %>
+
+    <% } %>
+
+    <%- include("./partials/category.ejs", {
+        categoryName: "All Items",
+        canEdit: false,
+        canDel: false
+    }) %>
+
+    <%- include("./partials/category.ejs", {
+        categoryName: "+ Add Category",
+        canEdit: false,
+        canDel: false
+    }) %>
+
+
+
+</main>
 
 
 
