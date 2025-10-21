@@ -75,10 +75,12 @@ header>nav>ul>li>a::after{
 
 
 
-header>nav>ul>li>a:hover{
+header>nav>ul>li>a:hover,
+a.current-page-nav-link{
     color: white;
 }
 
-header>nav>ul>li>a:hover::after{
+header>nav>ul>li>a:hover::after,
+a.current-page-nav-link::after{
     width: 100%;
 }

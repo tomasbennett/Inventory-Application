@@ -23,9 +23,17 @@
 </header>
 
 <script>
+    
+
     document.querySelectorAll(".nav-link").forEach(link => {
+        const isCurrentPage = window.location.pathname === link.getAttribute("href");
+
+        if (isCurrentPage) {
+            link.classList.add("current-page-nav-link");
+        }
+
         link.addEventListener("click", e => {
-            if (window.location.pathname === link.getAttribute("href")) {
+            if (isCurrentPage) {
                 e.preventDefault();
                 console.log("Already on this page!");
             }
