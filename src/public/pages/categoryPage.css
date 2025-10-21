@@ -5,8 +5,8 @@ main.categories-main-page{
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     grid-auto-rows: 20rem;
 
-    column-gap: 2rem;
-    row-gap: 2rem;
+    column-gap: 3rem;
+    row-gap: 4rem;
 
     width: 100%;
 

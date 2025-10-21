@@ -24,7 +24,22 @@ div.category-outer-container:hover{
 }
 
 
+
+div.category-outer-container[data-action="add-category"]{
+    background-color: rgb(131, 14, 102);
+}
+
+div.category-outer-container[data-action="add-category"]:hover{
+    background-color: rgb(206, 82, 103);
+}
+
+
+
+
+
 div.category-outer-container>p.category-title{
     font-size: larger;
     font-weight: bolder;
+
+    font-family: 'Courier New', Courier, monospace;
 }

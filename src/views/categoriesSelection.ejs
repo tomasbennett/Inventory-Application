@@ -34,6 +34,22 @@
 
 </main>
 
+<script>
+    const itemCategories = document.querySelectorAll(".category-outer-container[data-action='redirect']");
+    itemCategories.forEach((category) => {
+        const categoryURL = category.getAttribute("data-redirect-url");
+
+        category.addEventListener("click", (e) => {
+            e.stopPropagation();
+            window.location.href = categoryURL;
+
+        });
+
+    });
+
+</script>
+
+
 
 
 <%- contentFor('pageTitle') %>
