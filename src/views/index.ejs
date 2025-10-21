@@ -1,7 +1,22 @@
 
 
 <%- include("./partials/header.ejs") %>
-<%- include("./partials/homeMain.ejs") %>
+<main class="home-main-container">
+
+    <h1>
+        Home Page
+    </h1>
+    
+    <p>
+        Welcome to the inventory application home page, feel free to navigate 
+        over to the 'Categories' page or the 'All Items' page using the nav bar at the top of the screen.
+    </p>
+
+</main>
 
 <%- contentFor('pageTitle') %>
-Home Page
+<title>Home Page</title>
+
+
+<%- contentFor('styleSheets') %>
+<link rel="stylesheet" href="/pages/homePage.css">

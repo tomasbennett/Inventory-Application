@@ -1,0 +1,18 @@
+header {
+    flex-shrink: 0;
+
+    display: flex;
+
+    width: 100%;
+}
+
+header>nav {
+    display: flex;
+}
+
+
+header>nav>ul{
+    display: flex;
+
+    list-style: none;
+}
