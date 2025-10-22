@@ -5,8 +5,14 @@
 
         <% for (let i = 0; i < items.length; i++) { %>
     
-    
-    
+            <li>
+
+                <%- include("./partials/item.ejs", {
+                    itemName: items[i].name,
+                    canDel: true,
+                }) %>
+
+            </li>
     
     
         <% } %>
@@ -21,3 +27,26 @@
     </p>
 
 <% } %>
+
+
+<%- include("./partials/item.ejs", {
+    itemName: "+ Add Item",
+    canDel: false
+}) %>
+
+
+<script>
+    
+</script>
+
+
+
+
+<%- contentFor('pageTitle') %>
+    <title>Items Page</title>
+
+
+<%- contentFor('styleSheets') %>
+    <link rel="stylesheet" href="/pages/itemsPage.css">
+
+

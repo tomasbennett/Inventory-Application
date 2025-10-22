@@ -1,5 +1,5 @@
 import express from "express";
-import { categoriesListPageGET, homePageGET } from "./controllers/mainControllers";
+import { categoriesListPageGET, homePageGET, itemsListPageGETParams } from "./controllers/mainControllers";
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 
@@ -23,6 +23,7 @@ app.set("layout", "layouts/mainLayout");
 app.get("/", homePageGET);
 
 app.get("/categories", categoriesListPageGET);
+app.get("/items/:id", itemsListPageGETParams);
 
 
 

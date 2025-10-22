@@ -1,6 +1,6 @@
 import { Request, Response } from "express-serve-static-core";
-import { ICategoryType } from "../dtos/ICategoriesType";
-import { getAllCategories } from "../db/queries";
+import { ICategoryType, IItemType } from "../dtos/ICategoriesType";
+import { getAllCategories, getAllItemsByCategory } from "../db/queries";
 
 
 export function homePageGET(req: Request, res: Response): void {
@@ -20,15 +20,22 @@ export async function categoriesListPageGET(req: Request, res: Response) {
 }
 
 
-export function itemsListPageGETParams(req: Request<{ id: string }>, res: Response): void {
+export async function itemsListPageGETParams(req: Request<{ id: string }>, res: Response) {
     const idParam = req.params.id;
     const idNumber = Number(idParam);
 
-    if (!isNaN(idNumber)) {
+    if (isNaN(idNumber)) {
+        throw new Error("id passed in was not a valid number!!!");
         
-
-
     }
+
+    const items: IItemType[] | null = await getAllItemsByCategory(idNumber);
+
+    if (items === null) {
+        throw new Error("the items returned null meaning error in fetching or error in return type!!!")
+    }
+
+    return res.render("itemsDisplay", { items });
 
 
 }
