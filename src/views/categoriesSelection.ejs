@@ -5,6 +5,7 @@
     <% for (let i = 0; i < categories.length; i++) { %>
 
         <%- include("./partials/category.ejs", {
+            categoryId: categories[i].id,
             categoryName: categories[i].name,
             canDel: true,
             onClick: "redirect",
@@ -46,6 +47,28 @@
 
 </script>
 
+<script>
+    const delBtnAll = document.querySelectorAll(`.category-del-btn`).forEach(delBtn => {
+        const categoryId = delBtn.getAttribute("data-category-id");
+
+        delBtn.addEventListener("click", async () => {
+
+
+            const response = await fetch(`/api/category/${categoryId}`, {
+                method: 'DELETE'
+            });
+    
+            if (response.status === 204 || response.ok) {
+                alert('Category deleted!');
+                location.reload();
+            } else {
+                alert('Failed to delete category');
+            }
+    
+        });
+
+    });
+</script>
 
 
 

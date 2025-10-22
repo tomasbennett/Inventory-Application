@@ -1,6 +1,7 @@
 import { Request, Response } from "express-serve-static-core";
 import { ICategoryType, IItemType } from "../dtos/ICategoriesType";
-import { getAllCategories, getAllItems, getAllItemsByCategory } from "../db/queries";
+import { deleteCategoryByID, deleteItemByID, getAllCategories, getAllItems, getAllItemsByCategory } from "../db/queries";
+
 
 
 export function homePageGET(req: Request, res: Response): void {
@@ -26,7 +27,7 @@ export async function itemsListPageGETParams(req: Request<{ id: string }>, res: 
 
     if (isNaN(idNumber)) {
         throw new Error("id passed in was not a valid number!!!");
-        
+
     }
 
     const items: IItemType[] | null = await getAllItemsByCategory(idNumber);
@@ -53,3 +54,48 @@ export async function allItemsListPageGET(req: Request, res: Response) {
 
 }
 
+
+
+export async function deleteItem(req: Request<{ id: string }>, res: Response) {
+    const id: number = parseInt(req.params.id, 10);
+
+    if (isNaN(id)) return res.status(404).json({ error: "id unable to be converted to a number!!!" });
+
+    try {
+        const result: boolean = await deleteItemByID(id);
+        if (result) {
+            return res.status(204).send();
+        }
+        return res.status(404).json({ error: "Item was not found!!!" });
+
+    } catch {
+        res.status(500).json({ error: "Server error" });
+    }
+
+
+
+
+}
+
+
+
+export async function deleteCategory(req: Request<{ id: string }>, res: Response) {
+    const id: number = parseInt(req.params.id, 10);
+
+    if (isNaN(id)) return res.status(404).json({ error: "id unable to be converted to a number!!!" });
+
+    try {
+        const result: boolean = await deleteCategoryByID(id);
+        if (result) {
+            return res.status(204).send();
+        }
+        return res.status(404).json({ error: "Category was not found!!!" });
+
+    } catch {
+        res.status(500).json({ error: "Server error" });
+    }
+
+
+
+
+}

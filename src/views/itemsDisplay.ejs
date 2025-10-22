@@ -11,6 +11,7 @@
     
     
                     <%- include("./partials/item.ejs", {
+                        itemId: items[i].id,
                         itemName: items[i].name,
                         canDel: true,
                     }) %>
@@ -44,7 +45,24 @@
 
 
 <script>
+    const delBtnAllItems = document.querySelectorAll(`.item-del-btn`).forEach(delBtn => {
+        const itemId = delBtn.getAttribute("data-item-id");
 
+        delBtn.addEventListener("click", async () => {
+            const response = await fetch(`/api/item/${itemId}`, {
+                method: 'DELETE'
+            });
+    
+            if (response.status === 204 || response.ok) {
+                alert('Item deleted!');
+                location.reload();
+            } else {
+                alert('Failed to delete item');
+            }
+    
+        });
+
+    });
 </script>
 
 

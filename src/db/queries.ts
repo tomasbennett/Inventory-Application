@@ -86,3 +86,39 @@ export async function getAllItemsByCategory(categoryId: number): Promise<IItemTy
     }
     
 }
+
+
+
+export async function deleteCategoryByID(id: number): Promise<boolean> {
+
+    const query: string = `
+        DELETE FROM ${projSchemaName}.${projCategoryTableName}
+        WHERE id = $1
+    `
+
+    const result = await pool.query(query, [id]);
+
+    if (result.rowCount === 0) {
+        return false;
+    }
+
+    return true;
+
+}
+
+export async function deleteItemByID(id: number): Promise<boolean> {
+
+    const query: string = `
+        DELETE FROM ${projSchemaName}.${projItemTableName}
+        WHERE id = $1
+    `
+
+    const result = await pool.query(query, [id]);
+
+    if (result.rowCount === 0) {
+        return false;
+    }
+
+    return true;
+
+}

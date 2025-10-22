@@ -10,7 +10,10 @@
 
     <% if (canDel) { %>
 
-        <button class="close-btn category-del-btn" type="button">X</button>
+        <button 
+            data-category-id="<%= categoryId %>"
+            class="close-btn category-del-btn" 
+            type="button">X</button>
 
     <% } %>
 

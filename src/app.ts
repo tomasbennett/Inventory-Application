@@ -1,5 +1,5 @@
 import express from "express";
-import { allItemsListPageGET, categoriesListPageGET, homePageGET, itemsListPageGETParams } from "./controllers/mainControllers";
+import { allItemsListPageGET, categoriesListPageGET, deleteCategory, deleteItem, homePageGET, itemsListPageGETParams } from "./controllers/mainControllers";
 const expressLayouts = require("express-ejs-layouts");
 const app = express();
 
@@ -24,7 +24,11 @@ app.get("/", homePageGET);
 
 app.get("/categories", categoriesListPageGET);
 app.get("/items/:id", itemsListPageGETParams);
-app.get("/all-items", allItemsListPageGET)
+app.get("/all-items", allItemsListPageGET);
+
+
+app.delete("/api/category/:id", deleteCategory);
+app.delete("/api/item/:id", deleteItem);
 
 
 
