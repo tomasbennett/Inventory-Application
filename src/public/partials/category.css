@@ -17,6 +17,13 @@ div.category-outer-container{
 
 
     transition: background-color .2s linear;
+
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    column-gap: 3rem;
 }
 
 div.category-outer-container:hover{

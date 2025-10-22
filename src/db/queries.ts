@@ -30,10 +30,9 @@ export async function getAllItems(): Promise<IItemType[] | null> {
 
     const allItems = allItemsResult.rows;
 
-    const result = z.array(CategorySchema).safeParse(allItems);
+    const result = z.array(ItemSchema).safeParse(allItems);
 
     if (result.success) {
-        console.log("success, the data is a match to ICategoryTypeArr");
         return result.data;
     }
 

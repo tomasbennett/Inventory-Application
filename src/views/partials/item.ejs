@@ -1,3 +1,15 @@
-<p data-can-delete=<%= canDel %>>
-    <%= itemName %>
-</p>
+
+<li data-can-delete=<%= canDel %>>
+
+    <p>
+        <%= itemName %>
+    </p>
+
+    <% if (canDel) { %>
+
+        <button class="item-del-btn close-btn" type="button">X</button>
+
+    <% } %>
+
+
+</li>

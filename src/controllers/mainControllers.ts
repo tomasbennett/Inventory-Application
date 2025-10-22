@@ -1,6 +1,6 @@
 import { Request, Response } from "express-serve-static-core";
 import { ICategoryType, IItemType } from "../dtos/ICategoriesType";
-import { getAllCategories, getAllItemsByCategory } from "../db/queries";
+import { getAllCategories, getAllItems, getAllItemsByCategory } from "../db/queries";
 
 
 export function homePageGET(req: Request, res: Response): void {
@@ -39,3 +39,17 @@ export async function itemsListPageGETParams(req: Request<{ id: string }>, res: 
 
 
 }
+
+
+export async function allItemsListPageGET(req: Request, res: Response) {
+
+    const items: IItemType[] | null = await getAllItems();
+
+    if (items === null) {
+        throw new Error("the items returned null meaning error in fetching or error in return type!!!")
+    }
+
+    return res.render("itemsDisplay", { items });
+
+}
+
