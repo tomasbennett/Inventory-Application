@@ -1,0 +1,85 @@
+dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    height: min(100%, 40rem);
+    width: min(50rem, 100%);
+
+    background-color: rgb(27, 27, 27);
+    color: white;
+
+    border-radius: 1rem;
+
+    border: .2rem white solid;
+
+    padding: 3rem 1rem;
+}
+
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+dialog>div{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+dialog>div>button.close-btn {
+    align-self: flex-end;
+}
+
+dialog>div>form {
+    width: 100%;
+
+    padding-top: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    row-gap: 4rem;
+
+
+}
+
+dialog>div>form>fieldset {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    row-gap: .8rem;
+
+}
+
+dialog>div>form>fieldset>input {
+    padding: 1rem 0;
+    padding-left: .5rem;
+
+    width: min(100%, 30rem);
+
+    border-radius: .5rem;
+}
+
+
+
+dialog>div>form>button {
+    padding: 1rem 2rem;
+
+    cursor: pointer;
+
+    border-radius: .5rem;
+}

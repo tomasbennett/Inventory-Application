@@ -32,6 +32,11 @@
 
 </main>
 
+<%- include("./partials/dialog.ejs", {
+    actionUrl: url
+}) %>
+
+
 <script>
     const itemCategories = document.querySelectorAll(".category-outer-container[data-action='redirect']");
     itemCategories.forEach((category) => {
@@ -51,8 +56,8 @@
     const delBtnAll = document.querySelectorAll(`.category-del-btn`).forEach(delBtn => {
         const categoryId = delBtn.getAttribute("data-category-id");
 
-        delBtn.addEventListener("click", async () => {
-
+        delBtn.addEventListener("click", async (e) => {
+            e.stopPropagation();
 
             const response = await fetch(`/api/category/${categoryId}`, {
                 method: 'DELETE'
@@ -71,6 +76,26 @@
 </script>
 
 
+<script>
+    const addCategoryBtn = document.querySelector(".category-outer-container[data-action='add-category']");
+    const dialog = document.querySelector("dialog");
+    const dialogCloseBtn = dialog.querySelector(".close-btn");
+
+    addCategoryBtn.addEventListener("click", () => {
+        dialog.showModal();
+
+        dialogCloseBtn.addEventListener("click", () => { 
+            dialog.close();
+
+        }, { once: true });
+
+    });
+    
+    
+    
+</script>
+
+
 
 <%- contentFor('pageTitle') %>
     <title>Categories Page</title>
@@ -78,4 +103,5 @@
 
 <%- contentFor('styleSheets') %>
     <link rel="stylesheet" href="/pages/categoryPage.css">
+    <link rel="stylesheet" href="/partials/dialog.css">
     <link rel="stylesheet" href="/partials/category.css">

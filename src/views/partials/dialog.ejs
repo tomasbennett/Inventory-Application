@@ -1,0 +1,15 @@
+<dialog>
+    <div>
+        <button class="close-btn dialog-close-btn" type="button">X</button>
+        <form 
+            action="<%= actionUrl %>"
+            method="post"
+            >
+            <fieldset>
+                <label for="name">Name:</label>
+                <input name="name" id="name" placeholder="Please type the name here..." type="text" required minlength="1" />
+            </fieldset>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</dialog>

@@ -122,3 +122,68 @@ export async function deleteItemByID(id: number): Promise<boolean> {
     return true;
 
 }
+
+
+export async function insertNewItemRow(name: string): Promise<IItemType> {
+    const query: string = `
+        INSERT INTO ${projSchemaName}.${projItemTableName} (name) 
+        VALUES ($1) 
+        RETURNING *
+    `
+
+    try {
+
+        const result = await pool.query(query, [name]);
+
+        return result.rows[0];
+
+    } catch (err) {
+
+        throw err;
+
+    }
+}
+
+
+export async function insertItemCategoryJunctionRow(
+    itemId: number, categoryId: number
+): Promise<{item_id: number, category_id: number}> {
+    const query: string = `
+        INSERT INTO ${projSchemaName}.${projJunctionTableName} (item_id, category_id) 
+        VALUES ($1, $2) 
+        RETURNING *
+    `
+
+    try {
+        const result = await pool.query(query, [itemId, categoryId]);
+
+        return result.rows[0];
+
+    } catch (err) {
+
+        throw err;
+
+    }
+}
+
+
+
+export async function insertNewCategoryRow(name: string): Promise<ICategoryType> {
+    const query: string = `
+        INSERT INTO ${projSchemaName}.${projCategoryTableName} (name) 
+        VALUES ($1) 
+        RETURNING *
+    `
+
+    try {
+
+        const result = await pool.query(query, [name]);
+
+        return result.rows[0];
+
+    } catch (err) {
+
+        throw err;
+
+    }
+}

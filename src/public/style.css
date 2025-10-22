@@ -27,8 +27,6 @@ html {
     width: 100%;
     height: 100%;
 
-    /* padding: 2rem 5rem; */
-
     background-color: var(--background-colour);
     color: var(--text-colour);
 
@@ -40,6 +38,8 @@ html {
     row-gap: 4rem;
 
     overflow: hidden;
+
+    position: relative;
 }
 
 

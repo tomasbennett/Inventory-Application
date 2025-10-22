@@ -42,13 +42,20 @@
 </main>
 
 
+<%- include("./partials/dialog.ejs", {
+    actionUrl: url
+}) %>
+
+
 
 
 <script>
     const delBtnAllItems = document.querySelectorAll(`.item-del-btn`).forEach(delBtn => {
         const itemId = delBtn.getAttribute("data-item-id");
 
-        delBtn.addEventListener("click", async () => {
+        delBtn.addEventListener("click", async (e) => {
+            e.stopPropagation();
+
             const response = await fetch(`/api/item/${itemId}`, {
                 method: 'DELETE'
             });
@@ -67,12 +74,33 @@
 
 
 
+<script>
+
+    const addItemBtn = document.querySelector("ul.items-list-container > li[data-can-delete='false']");
+    const dialog = document.querySelector("dialog");
+    const dialogCloseBtn = dialog.querySelector(".close-btn");
+
+    addItemBtn.addEventListener("click", () => {
+        dialog.showModal();
+
+        dialogCloseBtn.addEventListener("click", () => { 
+            dialog.close();
+            
+        }, { once: true })
+
+    });
+    
+</script>
+
+
+
 
 <%- contentFor('pageTitle') %>
     <title>Items Page</title>
 
 
 <%- contentFor('styleSheets') %>
+    <link rel="stylesheet" href="/partials/dialog.css">
     <link rel="stylesheet" href="/pages/itemsPage.css">
 
 
